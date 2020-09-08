@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "175142826058",
+    "firebase_url": "https://cashflow-5027f.firebaseio.com",
+    "project_id": "cashflow-5027f",
+    "storage_bucket": "cashflow-5027f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:175142826058:android:ce852bdab67b8fac4876b3",
+        "android_client_info": {
+          "package_name": "com.example.cashflow"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "175142826058-e8a747qsnq7k4tg3mgu00dov3oqvsvm3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.cashflow",
+            "certificate_hash": "672ba86e816bc201a9583186938b7eabd74e9b4b"
+          }
+        },
+        {
+          "client_id": "175142826058-13v2gj3nrk8veogo6rd7at82av0clib5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDwJtA0T3d__uOX9YCdusz9MeG25uEYWG4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "175142826058-13v2gj3nrk8veogo6rd7at82av0clib5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
