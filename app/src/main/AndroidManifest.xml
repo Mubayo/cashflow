@@ -10,11 +10,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".sales_try"
+            android:name=".AddSales"
             android:label="New Sales"
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
-            android:name=".product"
+            android:name=".AddProducts"
             android:label="New Product"
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity

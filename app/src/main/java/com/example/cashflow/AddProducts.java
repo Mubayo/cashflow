@@ -3,38 +3,50 @@ package com.example.cashflow;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatImageView;
 
-import android.nfc.Tag;
+import android.content.Intent;
 import android.os.Bundle;
-import android.text.Html;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.Toolbar;
 
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 import java.time.LocalDate;
+import java.util.HashMap;
 
-public class product extends AppCompatActivity {
+public class AddProducts extends AppCompatActivity {
 
+    public TextView p_name;
+    private AppCompatImageView back;
+    EditText product_name, product__cost_price, product_selling_price, product_quantity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product);
-        final TextView p_name = findViewById(R.id.product_name1);
+        p_name = findViewById(R.id.product_name1);
         Button add_product = findViewById(R.id.add_prod);
-        final EditText product_name = findViewById(R.id.name_text);
-        final EditText product__cost_price = findViewById(R.id.price_text);
-        final EditText product_selling_price = findViewById(R.id.sale_text);
-        final EditText product_quan = findViewById(R.id.quan_text);
+        product_name = findViewById(R.id.name_text);
+        product__cost_price = findViewById(R.id.price_text);
+        product_selling_price = findViewById(R.id.sale_text);
+        product_quantity = findViewById(R.id.quan_text);
+        back = findViewById(R.id.back);
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(AddProducts.this, MainActivity.class));
+            }
+        });
+        
         add_product.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -47,18 +59,39 @@ public class product extends AppCompatActivity {
                 String name = product_name.getText().toString();
                 String cost_price = product__cost_price.getText().toString();
                 String sell_price = product_selling_price.getText().toString();
-                String quan = product_quan.getText().toString();
+                String quantity = product_quantity.getText().toString();
                 DatabaseReference myRef = database.getReference("Products");
-                myRef.child(ts.toString()).push().setValue(name);
+
+                HashMap<String, Object> addProducts = new HashMap<>();
+                addProducts.put("name", name);
+                addProducts.put("cost_price", cost_price);
+                addProducts.put("sell_price", sell_price);
+                addProducts.put("quantity", quantity);
+
+                /*myRef.child(ts.toString()).push().setValue(name);
                 myRef.child(ts.toString()).push().setValue(cost_price);
                 myRef.child(ts.toString()).push().setValue(sell_price);
-                myRef.child(ts.toString()).push().setValue(quan);
-                product_name.setText("");
-                product_quan.setText("");
-                product_selling_price.setText("");
-                product__cost_price.setText("");
+                myRef.child(ts.toString()).push().setValue(quantity);*/
+
+                myRef.child(ts.toString()).push().setValue(addProducts).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()){
+                            product_name.setText("");
+                            product_quantity.setText("");
+                            product_selling_price.setText("");
+                            product__cost_price.setText("");
+
+                            startActivity(new Intent(AddProducts.this, MainActivity.class));
+                        }else {
+                            Toast.makeText(AddProducts.this, "Couldn't add: " + task.getException(), Toast.LENGTH_LONG).show();
+                        }
+                    }
+                });
+
+
                 // Read from the database
-                myRef.child(ts.toString()).addValueEventListener(new ValueEventListener() {
+                /*myRef.child(ts.toString()).addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         // This method is called once with the initial value and again
@@ -76,7 +109,7 @@ public class product extends AppCompatActivity {
                         // Failed to read value
                         databaseError.toException();
                     }
-                });
+                });*/
 
             }
         });

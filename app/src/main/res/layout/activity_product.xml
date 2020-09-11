@@ -8,8 +8,17 @@
     android:layout_height="match_parent"
     android:background="@drawable/cashflow_bg"
     android:theme="@style/AppTheme"
-    tools:context=".product">
+    tools:context=".AddProducts">
 
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#FF0101"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -17,8 +26,9 @@
         android:layout_height="170dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/progressBar"
         android:orientation="vertical">
+
 
         <TextView
             android:textStyle="bold"
@@ -85,7 +95,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignLeft="@id/name_text"
-            android:text="Product Name :"
+            android:text="Product Name:"
             android:textSize="18sp" />
 
         <EditText
@@ -109,7 +119,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/name_text"
             android:layout_alignLeft="@id/name_text"
-            android:text="Cost Price :"
+            android:text="Cost Price:"
             android:textSize="18sp" />
 
         <EditText
@@ -134,7 +144,7 @@
             android:layout_height="wrap_content"
             android:layout_alignBaseline="@id/price"
             android:layout_alignRight="@id/name_text"
-            android:text="Selling Price :"
+            android:text="Selling Price:"
             android:textSize="18sp" />
 
         <EditText
@@ -157,7 +167,7 @@
             android:layout_below="@id/price_text"
             android:layout_alignLeft="@id/quan_text"
             android:layout_marginTop="20dp"
-            android:text="Quantity :"
+            android:text="Quantity:"
             android:textColor="@android:color/background_dark"
             android:textFontWeight="500"
             android:textSize="18sp"
