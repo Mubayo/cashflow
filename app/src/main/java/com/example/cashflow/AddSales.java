@@ -2,11 +2,14 @@ package com.example.cashflow;
 
 import android.os.Bundle;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
@@ -15,8 +18,9 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import java.time.LocalDate;
+import java.util.HashMap;
 
-public class sales_try extends AppCompatActivity {
+public class AddSales extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,13 +43,25 @@ public class sales_try extends AppCompatActivity {
                 FirebaseDatabase database = FirebaseDatabase.getInstance();
                 String name = product_name.getText().toString();
                 String price = product_price.getText().toString();
-                String quan = product_quan.getText().toString();
-                String input = name+","+price+","+quan;
+                String quantity = product_quan.getText().toString();
+
+                HashMap<String, Object> addSales = new HashMap<>();
+                addSales.put("name", name);
+                addSales.put("price", price);
+                addSales.put("quantity", quantity);
+
                 DatabaseReference myRef = database.getReference("Sales");
-                myRef.child(ts.toString()).push().setValue(input);
-                product_name.setText("");
-                product_price.setText("");
-                product_quan.setText("");
+                myRef.child(ts.toString()).push().setValue(addSales).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()){
+                            product_name.setText("");
+                            product_price.setText("");
+                            product_quan.setText("");
+                        }
+                    }
+                });
+
             }
         });
 
