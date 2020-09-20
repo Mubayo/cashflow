@@ -89,32 +89,9 @@ public class AddProducts extends AppCompatActivity {
                     }
                 });
 
-
-                // Read from the database
-                /*myRef.child(ts.toString()).addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        // This method is called once with the initial value and again
-                        // whenever data at this location is updated.
-                        for (DataSnapshot postSnapshot: dataSnapshot.getChildren()) {
-                            // TODO: handle the post
-                            String value = postSnapshot.getValue(String.class);
-                            p_name.setText(value);
-                        }
-
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError databaseError) {
-                        // Failed to read value
-                        databaseError.toException();
-                    }
-                });*/
-
             }
         });
 
-//        android:background="#022a5b"
     }
     @Override
     public void setActionBar(@Nullable Toolbar toolbar) {
