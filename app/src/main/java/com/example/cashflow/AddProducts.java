@@ -32,7 +32,7 @@ public class AddProducts extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product);
-        p_name = findViewById(R.id.product_name1);
+        p_name = findViewById(R.id.product_name);
         Button add_product = findViewById(R.id.add_prod);
         product_name = findViewById(R.id.name_text);
         product__cost_price = findViewById(R.id.price_text);
