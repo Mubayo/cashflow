@@ -77,10 +77,6 @@ public class AddProducts extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()){
-                            product_name.setText("");
-                            product_quantity.setText("");
-                            product_selling_price.setText("");
-                            product__cost_price.setText("");
 
                             startActivity(new Intent(AddProducts.this, MainActivity.class));
                         }else {

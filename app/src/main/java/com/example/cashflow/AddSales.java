@@ -1,5 +1,6 @@
 package com.example.cashflow;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -55,9 +56,7 @@ public class AddSales extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()){
-                            product_name.setText("");
-                            product_price.setText("");
-                            product_quan.setText("");
+                            startActivity(new Intent(AddSales.this, MainActivity.class));
                         }
                     }
                 });
