@@ -1,17 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content"
+    android:layout_centerInParent="true">
 
     <androidx.cardview.widget.CardView
-        android:foregroundGravity="center"
+        android:layout_width="230dp"
+        android:layout_height="300dp"
         android:background="@color/colorPrimaryDark"
-        android:layout_margin="12dp"
-        app:cardElevation="6dp"
+        android:foregroundGravity="center"
         app:cardCornerRadius="16dp"
-        android:layout_width="250dp"
-        android:layout_height="300dp">
+        app:cardElevation="6dp"
+        android:layout_margin="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <RelativeLayout
             android:layout_width="wrap_content"
@@ -20,28 +26,31 @@
             <ImageView
                 android:id="@+id/product_image"
                 android:layout_width="match_parent"
-                android:layout_height="230dp"/>
+                android:layout_height="230dp"
+                android:src="@drawable/product" />
+
             <TextView
                 android:id="@+id/product_name"
-                android:textColor="@android:color/background_dark"
-                android:textStyle="bold"
-                android:textSize="17sp"
-                android:text="Product Name"
-                android:layout_marginLeft="13dp"
-                android:layout_marginStart="13dp"
-                android:layout_below="@id/product_image"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:layout_below="@id/product_image"
+                android:layout_marginStart="13dp"
+                android:layout_marginLeft="13dp"
+                android:text="Product Name"
+                android:textColor="@android:color/background_dark"
+                android:textSize="17sp"
+                android:textStyle="bold" />
+
             <TextView
                 android:id="@+id/product_price"
-                android:textSize="15sp"
-                android:text="#5000"
-                android:layout_marginLeft="13dp"
-                android:layout_marginStart="13dp"
-                android:layout_below="@id/product_name"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:layout_below="@id/product_name"
+                android:layout_marginStart="13dp"
+                android:layout_marginLeft="13dp"
+                android:text="#5000"
+                android:textSize="15sp" />
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
 
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -50,9 +50,10 @@ public class AddSales extends AppCompatActivity {
                 addSales.put("name", name);
                 addSales.put("price", price);
                 addSales.put("quantity", quantity);
+                addSales.put("date_time", ts.toString());
 
                 DatabaseReference myRef = database.getReference("Sales");
-                myRef.child(ts.toString()).push().setValue(addSales).addOnCompleteListener(new OnCompleteListener<Void>() {
+                myRef.push().setValue(addSales).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()){

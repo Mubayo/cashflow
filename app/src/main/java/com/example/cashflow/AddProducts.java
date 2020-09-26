@@ -67,13 +67,14 @@ public class AddProducts extends AppCompatActivity {
                 addProducts.put("cost_price", cost_price);
                 addProducts.put("sell_price", sell_price);
                 addProducts.put("quantity", quantity);
+                addProducts.put("date_time", ts.toString());
 
                 /*myRef.child(ts.toString()).push().setValue(name);
                 myRef.child(ts.toString()).push().setValue(cost_price);
                 myRef.child(ts.toString()).push().setValue(sell_price);
                 myRef.child(ts.toString()).push().setValue(quantity);*/
 
-                myRef.child(ts.toString()).push().setValue(addProducts).addOnCompleteListener(new OnCompleteListener<Void>() {
+                myRef.push().setValue(addProducts).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()){

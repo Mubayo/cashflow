@@ -69,7 +69,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
         public void getDetails(String productname, String productprice){
             //Glide.with(context).load(imagelink).into(productImage);
             productName.setText(productname);
-            productPrice.setText(productprice);
+            productPrice.setText("#"+productprice);
         }
     }
 }
