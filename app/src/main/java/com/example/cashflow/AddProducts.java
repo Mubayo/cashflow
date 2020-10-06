@@ -32,7 +32,7 @@ public class AddProducts extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product);
-        p_name = findViewById(R.id.product_name1);
+        p_name = findViewById(R.id.product_name);
         Button add_product = findViewById(R.id.add_prod);
         product_name = findViewById(R.id.name_text);
         product__cost_price = findViewById(R.id.price_text);
@@ -67,20 +67,17 @@ public class AddProducts extends AppCompatActivity {
                 addProducts.put("cost_price", cost_price);
                 addProducts.put("sell_price", sell_price);
                 addProducts.put("quantity", quantity);
+                addProducts.put("date_time", ts.toString());
 
                 /*myRef.child(ts.toString()).push().setValue(name);
                 myRef.child(ts.toString()).push().setValue(cost_price);
                 myRef.child(ts.toString()).push().setValue(sell_price);
                 myRef.child(ts.toString()).push().setValue(quantity);*/
 
-                myRef.child(ts.toString()).push().setValue(addProducts).addOnCompleteListener(new OnCompleteListener<Void>() {
+                myRef.push().setValue(addProducts).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()){
-                            product_name.setText("");
-                            product_quantity.setText("");
-                            product_selling_price.setText("");
-                            product__cost_price.setText("");
 
                             startActivity(new Intent(AddProducts.this, MainActivity.class));
                         }else {
@@ -89,32 +86,9 @@ public class AddProducts extends AppCompatActivity {
                     }
                 });
 
-
-                // Read from the database
-                /*myRef.child(ts.toString()).addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        // This method is called once with the initial value and again
-                        // whenever data at this location is updated.
-                        for (DataSnapshot postSnapshot: dataSnapshot.getChildren()) {
-                            // TODO: handle the post
-                            String value = postSnapshot.getValue(String.class);
-                            p_name.setText(value);
-                        }
-
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError databaseError) {
-                        // Failed to read value
-                        databaseError.toException();
-                    }
-                });*/
-
             }
         });
 
-//        android:background="#022a5b"
     }
     @Override
     public void setActionBar(@Nullable Toolbar toolbar) {
