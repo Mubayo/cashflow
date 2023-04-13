@@ -1,5 +1,6 @@
 package com.example.cashflow;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -49,15 +50,14 @@ public class AddSales extends AppCompatActivity {
                 addSales.put("name", name);
                 addSales.put("price", price);
                 addSales.put("quantity", quantity);
+                addSales.put("date_time", ts.toString());
 
                 DatabaseReference myRef = database.getReference("Sales");
-                myRef.child(ts.toString()).push().setValue(addSales).addOnCompleteListener(new OnCompleteListener<Void>() {
+                myRef.push().setValue(addSales).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()){
-                            product_name.setText("");
-                            product_price.setText("");
-                            product_quan.setText("");
+                            startActivity(new Intent(AddSales.this, MainActivity.class));
                         }
                     }
                 });
